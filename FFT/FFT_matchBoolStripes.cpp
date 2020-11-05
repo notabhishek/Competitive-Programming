@@ -1,4 +1,5 @@
-// FFT template sum of ai * bi for all cyclic shifts of b
+// FFT template match two stripes
+// given two boolean stripes, match them by rotating so that no two 1s are together
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -78,37 +79,31 @@ signed main() {
 	reverse(p1.begin() , p1.end());
 	for(int i = 0 ; i < n; ++i ) p1.push_back(0);
 	for(int i = 0 ; i < n; ++i ) p2.push_back(p2[i]);
-	
-	
+
 	vector<int> p1p2 = multiply(p1 , p2);
 	for(int i = n-1; i < 2 * n - 1; ++i) {
-		cout << "lshift b by " << i - (n-1) << ", ans = " << p1p2[i] << "\n";
+		// cout << "lshift b by " << i - (n-1) << ", ans = " << p1p2[i] << "\n";
+		if(p1p2[i] == 0) {
+			cout << "lshift b by " << i - (n-1) << " is a match\n";
+		}
 	}
 	
 }
 
 /*
 Example : 
-
 4
-1 2 3 4
-0 1 2 3
-
+0 0 1 1 
+0 1 1 0
 
 answers : 
-[1 2 3 4]*[0 1 2 3]=20
-[1 2 3 4]*[1 2 3 0]=14
-[1 2 3 4]*[2 3 0 1]=12
-[1 2 3 4]*[3 0 1 2]=14
+[0011][0110] = 1
+[0011][1100] = 0
+[0011][1001] = 1
+[0011][0011] = 2
 
-p1p2[2 *n ] = p1p2[n-1]
-[1 2 3 4]*[0 1 2 3]=20
+Output : 
 
-Output  : 
-
-lshift b by 0, ans = 20
-lshift b by 1, ans = 14
-lshift b by 2, ans = 12
-lshift b by 3, ans = 14
+lshift b by 1 is a match
 
 */
