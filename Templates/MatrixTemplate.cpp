@@ -38,17 +38,19 @@ public:
             A[i][i] = (T)1;
     }
     
-    void resize(int sz) {
-    	A.resize(sz , vector< T > (sz));
-    }
-    void resize(int sz, const T &val) {
-    	A.resize(sz , vector< T > (sz , val));
-    }
     void resize(int r , int c) {
-    	A.resize(r , vector< T > (c));
+    	this->r = r;
+    	this->c = c;
+		A.resize(r);
+		for(auto &i : this->A) 
+			i.resize(c);
     }
     void resize(int r , int c , const T &val) {
-    	A.resize(r , vector< T > (c , val));
+    	this->r = r;
+    	this->c = c;
+		A.resize(r);
+		for(auto &i : this->A) 
+			i.resize(c , val);
     }
     
     void display()
