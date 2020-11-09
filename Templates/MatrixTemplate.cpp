@@ -4,7 +4,7 @@ using namespace std;
 //set this macro when you need to use modulo in matrix operations
 #define mod 1000000007
 
-
+//Check line 168 for mul errors
 template <typename T>
 class Matrix {
 
@@ -37,6 +37,20 @@ public:
         for(int i=0;i<n;i++)
             A[i][i] = (T)1;
     }
+    
+    void resize(int sz) {
+    	A.resize(sz , vector< T > (sz));
+    }
+    void resize(int sz, const T &val) {
+    	A.resize(sz , vector< T > (sz , val));
+    }
+    void resize(int r , int c) {
+    	A.resize(r , vector< T > (c));
+    }
+    void resize(int r , int c , const T &val) {
+    	A.resize(r , vector< T > (c , val));
+    }
+    
     void display()
     {
         for(int i=0;i<r;i++)
