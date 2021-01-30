@@ -165,6 +165,24 @@ struct segTree
             return pQuery(2*v , tl , tmid , idx);
     }
     
+//     int kthOne(int v, int tl , int tr, int k) {  
+//     	if(clazy[v]) 	
+//     		propogate(v ,tl , tr);
+//     	if(tree[v].sum < k)  // does not exist
+//     		return -1;
+    		
+//     	if(tl == tr) 
+//     		return tl;
+//     	int tmid = (tl + tr)/2;
+//     	if(tree[2*v].sum < k) 
+//     		return kthOne(2*v + 1 , tmid + 1 , tr , k - tree[2*v].sum); 
+//     	else 
+//     		return kthOne(2*v , tl , tmid , k);
+//     }
+//     int KthOne(int k) {
+//     	return kthOne(1 , 0 , n-1 , k);
+//     }
+	
     void update(int l, int r, int v)
     {
         Update(1, 0, n - 1, l, r, v);
