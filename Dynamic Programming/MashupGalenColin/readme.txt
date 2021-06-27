@@ -1,1 +1,1 @@
-Mashup link : https://codeforces.com/contests/302977
+Mashup link: https://codeforces.com/contests/302977
