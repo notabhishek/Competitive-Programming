@@ -38,6 +38,21 @@ int lca(int u, int v)
     return up[u][0];
 }
 
+// v is ancestor of u
+int dist(int u , int v){
+	if(u == v)
+		return 0;
+		
+	int d = 0;
+	for (int i = l; i >= 0; --i) {
+        if (!isAnc(up[u][i] , v)) {
+            u = up[u][i];
+            d += 1ll<<i;
+        }
+    }
+    return d + 1;
+}
+
 void init(int root) {
     in.resize(n);
     out.resize(n);
