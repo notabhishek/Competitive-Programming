@@ -256,6 +256,29 @@ struct segTree
             return pQuery(2*v , tl , tmid , idx);
     }
     
+    // first index in [l,r] where a[idx]>=k 
+    int get_first(int v, int tl, int tr, int l, int r, int k) {
+    	if(clazy[v])
+    		propogate(v, tl , tr);
+    	if(tree[v].sum < k )
+    		return -1;
+    	if(tr < l || tl > r) 
+    		return -1;
+    		
+    	if(tl == tr){
+    		return tl;
+    	}
+    	
+    	int tmid = (tl + tr)/2;
+    	int res = get_first(2*v, tl, tmid, l, r, k);
+    	if(res != -1) return res;
+    	return get_first(2*v+1, tmid+1, tr, l, r, k);
+    }
+    
+    int get_first(int l , int r, int k){
+    	return get_first(1, 0, n-1, l , r, k);
+    }
+    
     int kthOne(int v, int tl , int tr, int k) {  
     	if(clazy[v]) 	
     		propogate(v ,tl , tr);
@@ -312,17 +335,20 @@ void solve()
 			cin >> l >> r >> v;
 			tree.update(l , r-1, v);
 		} else {
-			int l , v;
+			int l , v , ans = -1;
 			cin >> v>> l;
+			// get_first O(log(N))
+			ans = tree.get_first(l, n-1, v);
 			
-			int lo = l, hi = n-1, ans = -1;
-			while(lo<=hi) {
-				int mid= (lo + hi)/2;
-				if(tree.query(l , mid).sum >= v) {
-					ans = mid;
-					hi = mid-1;
-				} else lo = mid+1;
-			}
+			// binary search O(log^2 (N) )
+			// int lo = l, hi = n-1;
+			// while(lo<=hi) {
+				// int mid= (lo + hi)/2;
+				// if(tree.query(l , mid).sum >= v) {
+					// ans = mid;
+					// hi = mid-1;
+				// } else lo = mid+1;
+			// }
 			cout << ans << "\n";
 		}
 	}
