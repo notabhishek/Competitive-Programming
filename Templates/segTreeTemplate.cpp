@@ -164,13 +164,31 @@ struct segTree
         else 
             return pQuery(2*v , tl , tmid , idx);
     }
+//     first index in [l,r] where a[idx]>=k 
+//     int get_first(int v, int tl, int tr, int l, int r, int k) {
+//     	if(clazy[v])
+//     		propogate(v, tl , tr);
+//     	if(tree[v].sum < k )
+//     		return -1;
+//     	if(tr < l || tl > r) 
+//     		return -1;	
+//     	if(tl == tr){
+//     		return tl;
+//     	}	
+//     	int tmid = (tl + tr)/2;
+//     	int res = get_first(2*v, tl, tmid, l, r, k);
+//     	if(res != -1) return res;
+//     	return get_first(2*v+1, tmid+1, tr, l, r, k);
+//     }
+//     int get_first(int l , int r, int k){
+//     	return get_first(1, 0, n-1, l , r, k);
+//     }
     
 //     int kthOne(int v, int tl , int tr, int k) {  
 //     	if(clazy[v]) 	
 //     		propogate(v ,tl , tr);
 //     	if(tree[v].sum < k)  // does not exist
 //     		return -1;
-    		
 //     	if(tl == tr) 
 //     		return tl;
 //     	int tmid = (tl + tr)/2;
