@@ -2,7 +2,7 @@
 My CP Templates , Solutions
 
 Profiles : 
-- linkedin - https://www.linkedin.com/in/devilwithin/
+- linkedin - https://www.linkedin.com/in/notabhishek/
 - codeforces -  https://codeforces.com/profile/devil_within
 - codechef -    https://www.codechef.com/users/not_abhishek
 - hackerearth - https://www.hackerearth.com/@devil_within
