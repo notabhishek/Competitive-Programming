@@ -1,0 +1,19 @@
+# Write your MySQL query statement below
+# Using nested queries
+# select distinct num as ConsecutiveNums from Logs L1 
+# where (id+2)<=(select MAX(id) from Logs)
+# AND
+# L1.num = (select num from Logs L2 where L1.id + 1 = L2.id )
+# AND
+# L1.num = (select num from Logs L3 where L1.id + 2 = L3.id )
+
+# Using Joins
+select distinct l1.num as ConsecutiveNums from Logs l1 
+JOIN 
+Logs l2 on l1.id+1 = l2.id
+JOIN
+Logs l3 on l1.id+2 = l3.id
+where 
+l1.num = l2.num
+AND 
+l2.num = l3.num;
