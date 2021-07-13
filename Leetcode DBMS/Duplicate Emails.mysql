@@ -1,0 +1,7 @@
+# Write your MySQL query statement below
+# Using nested query
+# select distinct p1.Email as Email from Person p1
+# where 1 < (select count(*) from Person p2 where p2.Email = p1.Email);
+
+# Using group by
+select Email from Person group by Email having Count(Email) > 1;
