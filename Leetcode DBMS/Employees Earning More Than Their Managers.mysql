@@ -1,0 +1,5 @@
+# Write your MySQL query statement below
+select Name as Employee from Employee e
+where e.ManagerId is not null 
+AND
+e.Salary > ( Select Salary from Employee e2 where e2.id = e.ManagerId )
