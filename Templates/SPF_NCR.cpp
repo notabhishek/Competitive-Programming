@@ -18,6 +18,9 @@ int init(int n = MAXA) {
 	}
 }
 
+
+const int MOD = 998244353;
+
 // fpow
 ll fpow(ll b, ll e, ll mod=MOD) {
     ll ans=1; for(;e;b=b*b%mod,e/=2) if(e&1) ans=ans*b%mod; return ans; }
