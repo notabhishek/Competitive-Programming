@@ -5,7 +5,7 @@ Profiles :
 - linkedin - https://www.linkedin.com/in/notabhishek/
 - codeforces -  https://codeforces.com/profile/devil_within
 - codechef -    https://www.codechef.com/users/not_abhishek
-- hackerearth - https://www.hackerearth.com/@devil_within
-- leetcode -    https://leetcode.com/devil_within/
-- hackerrank -  https://www.hackerrank.com/devil_within
+- hackerearth - https://www.hackerearth.com/@notabhishek
+- leetcode -    https://leetcode.com/notabhishek/
+- hackerrank -  https://www.hackerrank.com/notabhishek
 - cses -        https://cses.fi/user/22538
