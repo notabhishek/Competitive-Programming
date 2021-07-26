@@ -24,18 +24,18 @@ void solve()
 ```
 // 2 pointer 
 int solve(int n, vector<int> c, int x)
-{
-	--x;
-	int cs = 0, ans = n + 1;
+{ 
+    --x;
+    int cs = 0, ans = n + 1;
     int i = 0, j = 0;
     while (j < n) {
-        while (cs <= x && j < n)
-            cs += c[j++];
- 
-        while (cs > x && i < n) {
-                ans = min(ans, j - i);
-            cs -= c[i++];
-        }
+	while (cs <= x && j < n)
+	    cs += c[j++];
+
+	while (cs > x && i < n) {
+		ans = min(ans, j - i);
+	    cs -= c[i++];
+	}
     }
     if(ans > n) ans = -1;
     return ans;
