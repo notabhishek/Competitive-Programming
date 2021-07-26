@@ -37,6 +37,7 @@ int solve(int n, vector<int> c, int x)
             cs -= c[i++];
         }
     }
+    if(ans > n) ans = -1;
     return ans;
 }
 ```
