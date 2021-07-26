@@ -44,10 +44,10 @@ int jumps(long long n) {
 Given an array A ( size <= 1e5 , -1e6<= A[i] <= 1e6) of integers, you are allowed to flip sign of atmost 2 subarrays, what is the maximum subarray sum
 ```
 Sample Input:
-5
-1 2 3 4 5
+8
+2 -19 -1 3 -39 -1 5 -2
 Sample Output:
-15
+70
 ```
 ```
 int solve(int n, vector<int> a, int k) {
