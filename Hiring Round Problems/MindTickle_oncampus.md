@@ -24,8 +24,12 @@ CTC -  32,50,000
 
 ### 1. Stay Healthy
 Given N ( 0 < N < 1e15 ), allowed jump sizes [1, 2, 4]. Find minimum jumps to make N
-- E.g. 10 = 4 + 4 + 2  ( ans = 3)
-
+```
+Sample Input:
+10
+Sample Output:
+3
+```
 ```
 int jumps(long long n) {
   long long ans = n/4;
@@ -38,7 +42,13 @@ int jumps(long long n) {
 
 ### 2. Ticklersion Dilemma
 Given an array A ( size <= 1e5 , -1e6<= A[i] <= 1e6) of integers, you are allowed to flip sign of atmost 2 subarrays, what is the maximum subarray sum
-
+```
+Sample Input:
+5
+1 2 3 4 5
+Sample Output:
+15
+```
 ```
 int solve(int n, vector<int> a, int k) {
 	// dp[ prefix ][ sign of i ][ total flipped subarrays ] 
