@@ -1,0 +1,25 @@
+class Solution {
+public:
+    map< int, vector<int>> dp;
+    vector<int> beautifulArray(int n) {
+        // arrange n number such that ther is no AP
+        // [arrange odd elements] [ arrange even elements]
+        // if both halves are beautiful whole array is beautiful
+        // since odd+even = odd != 2a[k] ever
+        if(dp.count(n))
+            return dp[n];
+        if(n == 1)
+            return dp[n] = vector<int>(1,1);
+        
+        int odd = (n+1)/2;
+        int even = n - odd;
+        vector<int> l = beautifulArray(odd);
+        vector<int> r = beautifulArray(even);
+        for(auto &i : l) // make l odd numbers
+            i = 2*i - 1; 
+        for(auto &i : r) // make r even numbers
+            l.push_back(2*i);
+        
+        return dp[n] = l;
+    }
+};
