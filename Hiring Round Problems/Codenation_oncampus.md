@@ -2,8 +2,8 @@
 
 
 ## 1. Homecoming Party
-Given an array A, for each index i find count of j, s.t. a[i]%a[j] = 0 or a[j]%a[i] = 0 , i!=j
-Logic: Sieve
+- Given an array A, for each index i find count of j, s.t. a[i]%a[j] = 0 or a[j]%a[i] = 0 , i!=j
+- Logic: Sieve
 ```
 Sample Input:
 5
