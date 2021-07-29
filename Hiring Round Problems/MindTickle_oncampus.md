@@ -134,7 +134,7 @@ void solve()
 - Given a graph ( N = 1e5 ) having N-1 bi-directional edges
 - every node is either 0, or 1 
 - The value of a subgraph is  abs( count(0) - count(1) ) , subgraph has to be connected
-- find maximum value of any subgraph
+- find maximum value of any subgraph, and print nodes in the subgraph
 ```
 Sample Input:
 8
