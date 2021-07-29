@@ -30,7 +30,7 @@ Sample Input:
 Sample Output:
 3
 ```
-- Logic: Greedy
+#### Logic: Greedy
 - Taking 4 is always optimal
 ```
 int jumps(long long n) {
@@ -51,7 +51,7 @@ Sample Input:
 Sample Output:
 70
 ```
-- Logic: DP
+#### Logic: DP
 - Dp[ prefix_i ][ sign_of_i ][ flipped_subarrays ] = max sum
 ```
 int solve(int n, vector<int> a, int k) {
@@ -98,7 +98,7 @@ Sample Input:
 Sample Output: 
 3
 ```
-- Logic: DFS
+#### Logic: DFS
 ```
 vector<vector<int>> g;
 int dfs(int u , int p) {
@@ -152,7 +152,8 @@ Sample Output:
 6
 1 2 3 6 7 8 
 ```
-- Logic: (assuming whole graph is a connected tree) 
+#### Logic: DP
+- (assuming whole graph is a connected tree) 
 - Find down[u] = max sum in subtree of u, taking u
 - Fin up[u] = max sum in tree except subtree of u, taking u
 - Max sum subgraph having u = up[u] + down[u]
