@@ -38,7 +38,7 @@ void solve()
 - Given 2 types of queries on an array
 - 1 idx val, set a[idx] = val
 - 2 l r,  return max value of  a[i]-a[i+1]+...  for every subarray [i, ]  in [l,r] 
-Logic: Segment Tree
+- Logic: Segment Tree
 ```
 Sample Input:
 5
@@ -57,7 +57,7 @@ using namespace std;
 #define int int64_t
 struct node {
 	// pn : starts at positive and ends with negative sign
-	// [0 = max sum subarray ] [ 1= max prefix ] [ 2= max suffix ][ 3 = sum ]
+	// [0 = max sum subarray ] [ 1= max prefix ] [ 2= max suffix ]
 	vector<int> pp;
 	vector<int> nn;
 	vector<int> pn;
