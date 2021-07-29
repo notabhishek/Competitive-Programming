@@ -206,10 +206,10 @@ int32_t main() {
 	return 0;
 }
 ```
-# 3. Find MEX in tree
+## 3. Find MEX in tree
 - Given a tree with 10000 nodes , root 0 for each node find mex of its subtree i.e smallest value not present in subtree
 - All nodes have distinct values,  0<= val_i < n
-- Logic: 
+### Logic: 
 - For every node which is not an ancestor of value ZERO, mex = 0
 - For ancestors of ZERO calculate mex linearly using set
 ```
