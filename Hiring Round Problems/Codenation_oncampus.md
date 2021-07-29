@@ -206,3 +206,99 @@ int32_t main() {
 # 3. Find MEX in tree
 - Given a tree with 10000 nodes , root 0 for each node find mex of its subtree i.e smallest value not present in subtree
 - All nodes have distinct values,  0<= val_i < n
+- Logic: 
+- For every node which is not an ancestor of value ZERO, mex = 0
+- For ancestors of ZERO calculate mex linearly using set
+```
+Sample Input:
+6
+0 1 
+1 2 
+0 3
+3 4 
+3 5
+4 3 5 1 0 2
+Sample Output:
+6 0 0 3 1 0 
+```
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+vector<vector<int>> g;
+vector<int> val;
+vector<int> par;
+vector<int> in;
+vector<int> out;
+vector<int> mex;
+int Time;
+int zero; // pos of value 0
+void dfs(int u, int p) {
+	in[u] = ++Time;
+	par[u] = p;
+	for(auto &v : g[u])
+		if(v!=p)
+			dfs(v, u);
+	out[u] = ++Time;  
+}
+// u is ancestor of v?
+bool isAnc(int u, int v) {
+	return in[u] <= in[v] && out[u] >= out[v];
+}
+
+set< int > s;
+void calc(int u) {
+	for(auto &v: g[u] )
+		if(v != par[u] && !isAnc(v, zero))
+			calc(v);
+	s.erase(val[u]);
+}
+void solve()
+{
+	cin >> n;
+	g = vector<vector<int>>(n);
+	for(int i = 1; i < n; ++i) {
+		int u , v;
+		cin >> u >> v;
+		g[u].push_back(v);
+		g[v].push_back(u);
+	}	
+	val.resize(n);
+	for(auto &i : val) cin >> i;
+	zero = find(val.begin(), val.end(), 0) - val.begin();
+	
+	Time = 0;
+	in.resize(n);
+	out.resize(n);
+	par.resize(n);
+	mex.resize(n, n);
+	dfs(0, -1);
+	
+	for(int i = 0; i <= n; ++i) s.insert(i);
+	// erase zero's subtree
+	for(int i = 0; i < n; ++i) {
+		if(isAnc(zero, i)) 
+			s.erase(val[i]);
+		if(!isAnc(i, zero))
+			mex[i] = 0;
+	}
+	mex[zero] = *s.begin();
+	
+	int cur = par[zero];
+	while(cur != -1) {
+		calc(cur);
+		mex[cur] = *s.begin();
+		cur = par[cur];
+	}
+	for(auto &i : mex) cout << i << " ";
+	
+}
+
+signed main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    solve();
+}
+```
