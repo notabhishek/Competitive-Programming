@@ -3,7 +3,7 @@
 
 ## 1. Homecoming Party
 - Given an array A, for each index i find count of j, s.t. a[i]%a[j] = 0 or a[j]%a[i] = 0 , i!=j
-- Logic: Sieve
+### Logic: Sieve
 ```
 Sample Input:
 5
@@ -38,7 +38,10 @@ void solve()
 - Given 2 types of queries on an array
 - 1 idx val, set a[idx] = val
 - 2 l r,  return max value of  a[i]-a[i+1]+...  for every subarray [i, ]  in [l,r] 
-- Logic: Segment Tree
+### Logic: Segment Tree
+- We store 
+- length, sum, pp[mxSubarray, mxPref, mxSuf], pn[mxSubarray, mxPref, mxSuf], np[mxSubarray, mxPref, mxSuf], nn[mxSubarray, mxPref, mxSuf]
+- where pp means subarray starts with + sign and ends in +, np means starts in - and ends in +
 ```
 Sample Input:
 5
