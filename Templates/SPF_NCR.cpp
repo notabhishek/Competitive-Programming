@@ -28,13 +28,16 @@ ll fpow(ll b, ll e, ll mod=MOD) {
 // NCR 
 vector<int> fact;
 vector<int> ifact;
-void init(int NAX) {
+void init(int NAX = 3e5) {
 	fact.resize(NAX + 1);
 	ifact.resize(NAX + 1);
-	fact[0] = ifact[0] = 1;
+	fact[0] = 1;
 	for(int i = 1; i <= NAX; ++i) {
 		fact[i] = (fact[i-1] * i) % MOD;
-		ifact[i] = fpow(fact[i] , MOD-2, MOD);
+	}
+	ifact[NAX] = fpow(fact[NAX], MOD-2, MOD);
+	for(int i = NAX-1; i >= 0; --i) {
+		ifact[i] = ( (i+1) * ifact[i+1] )%MOD;
 	}
 }
 int ncr(int n, int r){
