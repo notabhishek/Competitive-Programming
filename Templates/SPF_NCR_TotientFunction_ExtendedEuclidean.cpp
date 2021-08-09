@@ -76,3 +76,33 @@ int gcd(int a, int b, int& x, int& y) {
     y = x1 - y1 * (a / b);
     return d;
 }
+
+
+// Eulers Totient function using phi(n) = n(1-1/p1)(1-1/p2)....(1-1/pk)
+void phi_1_to_n(int n) {
+    vector<int> phi(n + 1);
+    phi[0] = 0;
+    phi[1] = 1;
+    for (int i = 2; i <= n; i++)
+        phi[i] = i;
+
+    for (int i = 2; i <= n; i++) {
+        if (phi[i] == i) {
+            for (int j = i; j <= n; j += i)
+                phi[j] -= phi[j] / i;
+        }
+    }
+}
+
+// Eulers totient function using  sum (phi(d)) = n, where d is a divisor of n
+void phi_1_to_n(int n) {
+    vector<int> phi(n + 1);
+    phi[0] = 0;
+    phi[1] = 1;
+    for (int i = 2; i <= n; i++)
+        phi[i] = i - 1;
+
+    for (int i = 2; i <= n; i++)
+        for (int j = 2 * i; j <= n; j += i)
+              phi[j] -= phi[i];
+}
