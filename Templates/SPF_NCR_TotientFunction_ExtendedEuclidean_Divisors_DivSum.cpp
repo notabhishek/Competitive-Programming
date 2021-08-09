@@ -18,19 +18,42 @@ int init(int n = MAXA) {
 	}
 }
 
-
-// SPF, Primes O(N)
-const int N = 10000000;
-int lp[N+1];
+// SPF, Primes in O(N)
+const int NX = 1e6 + 5;
+int lp[NX+1];
 vector<int> pr;
-
-for (int i=2; i<=N; ++i) {
-    if (lp[i] == 0) {
-        lp[i] = i;
-        pr.push_back (i);
-    }
-    for (int j=0; j<(int)pr.size() && pr[j]<=lp[i] && i*pr[j]<=N; ++j)
-        lp[i * pr[j]] = pr[j];
+void sieve() {
+	for (int i=2; i<=NX; ++i) {
+	    if (lp[i] == 0) {
+	        lp[i] = i;
+	        pr.push_back (i);
+	    }
+	    for (int j=0; j<(int)pr.size() && pr[j]<=lp[i] && i*pr[j]<=NX; ++j)
+	        lp[i * pr[j]] = pr[j];
+	}
+}
+int divisors(int n) {
+	int d = 1;
+	while(n != 1) {
+		int p = lp[n], e = 0;
+		while(n % p == 0) {
+			++e; n/=p;
+		}
+		d=d*(e+1); // %MOD;
+	} 
+	return d;
+}
+ll divsum(ll n) {
+	ll sm = 1;
+	while(n != 1) {
+		int p = lp[n], e = 0;
+		while(n % p == 0) {
+			++e; n/=p;
+		}
+		ll cur = (fpow(p,e+1, LLONG_MAX) - 1) / (p-1); // * fpow(p-1, MOD-2, MOD) % MOD;
+		sm=sm*cur; // %MOD;
+	} 
+	return sm;
 }
 
 
