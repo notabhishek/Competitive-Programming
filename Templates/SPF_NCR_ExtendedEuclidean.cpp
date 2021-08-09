@@ -19,8 +19,22 @@ int init(int n = MAXA) {
 }
 
 
-const int MOD = 998244353;
+// SPF, Primes O(N)
+const int N = 10000000;
+int lp[N+1];
+vector<int> pr;
 
+for (int i=2; i<=N; ++i) {
+    if (lp[i] == 0) {
+        lp[i] = i;
+        pr.push_back (i);
+    }
+    for (int j=0; j<(int)pr.size() && pr[j]<=lp[i] && i*pr[j]<=N; ++j)
+        lp[i * pr[j]] = pr[j];
+}
+
+
+const int MOD = 998244353;
 // fpow
 ll fpow(ll b, ll e, ll mod=MOD) {
     ll ans=1; for(;e;b=b*b%mod,e/=2) if(e&1) ans=ans*b%mod; return ans; }
