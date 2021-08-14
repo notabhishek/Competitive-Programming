@@ -58,7 +58,67 @@ void solve()
 	cout << ans << "\n";
 }
 ```
+### 2. Correct Places 
+- Given an array A ( |A| <= 1e5 )
+- What is minimum number of swaps required such that after the swaps, A[i]%3 = i%3 for all 0<=i<N
+- output -1 if it is not possible 
+```
+Sample Input 1:
+3
+3 5 4
+Sample Output 1:
+1
 
+Sample Input 2:
+3
+4 5 3
+Sample Output 2:
+2											  
+```
+##### Logic: 
+- Greedily first swap indexes that want to go in each others place, ie. swapping A[i], A[j] corrects both
+- Swap left mismatching indexes
+```
+void solve()
+{
+	int n;
+	cin >> n;
+	vector<int> a(n);
+	for(auto &i : a) cin >> i;
+	
+	vector<int> d{(n+2)/3, (n+1)/3, n/3};
+	
+	vector<vector<int>> mis(3, vector<int> (3, 0));
+	vector<int> cnt(3, 0);
+	for(int i = 0; i < n; ++i) {
+		if((i%3) != (a[i]%3)) {
+			mis[a[i]%3][i%3]++;
+		} 
+		cnt[a[i]%3]++;
+	}
+	for(int i = 0; i < 3; ++i) 
+		if(cnt[i] != d[i]) { cout << "-1\n"; return; }
+	
+	int ans = 0;
+	for(int i = 0; i < 3; ++i) 
+		for(int j = 0; j < 3; ++j) {
+			int r = min(mis[i][j] , mis[j][i]);
+			mis[i][j] -= r;
+			mis[j][i] -= r;
+			ans += r;
+		}
+	vector<int> s(3);
+	for(int i = 0; i < 3; ++i)
+		s[i]= accumulate(mis[i].begin(), mis[i].end(), 0);
+	sort(s.begin(), s.end());
+	if(s[0]!=0) {
+		ans += s[0]+s[1];
+	} else if(s[1]!=0) {
+		ans += s[1];
+	} else if(s[2]!=0)ans = -1;
+	cout << ans;
+}											  
+```												  
 ### 3. Mex in subtree ( Non Distinct values )
 - Given a tree, and values for nodes, not necessarily distinct ( N<=1e5, val[i] <= 1e9)
 - Find MEX of subtree for each node
