@@ -59,7 +59,7 @@ void solve()
 }
 ```
 
-### 1. Mex in subtree ( Non Distinct values )
+### 3. Mex in subtree ( Non Distinct values )
 - Given a tree, and values for nodes, not necessarily distinct ( N<=1e5, val[i] <= 1e9)
 - Find MEX of subtree for each node
 - Not related to problem: The same problem was asked in another hiring round by CN, the only difference being val[i] were distinct, below approach works on both the problems but a much simpler solution to that problem is [here](https://github.com/notabhishek/Competitive-Programming/blob/main/Hiring%20Round%20Problems/Codenation_oncampus.md) 
