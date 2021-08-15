@@ -1,6 +1,6 @@
 # BlogVault
 ### 1. Sort if you can
-- Given an array A ( |A| <= 1e5), you can perform the following operation
+- Given an array A (A is a permutation of 1 to |A| i.e. contains all numbers from 1-|A| exactly once, |A| <= 1e5), you can perform the following operation
 - Move the first element X places to the right, 0<=X<N, cost = X ( distance moved)
 - Find the minimum cost to sort the array
 ```
