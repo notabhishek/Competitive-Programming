@@ -1,16 +1,5 @@
-template <typename T, typename S> ostream &operator<<(ostream &os, const map<T, S> &v)
-{
-    os << "{";
-    for (auto it : v)
-    {
-        os << "(" << it.first << " : " << it.second << ")";
-        if (it != *v.rbegin())
-            os << ", ";
-    }
-    os << "}\n";
-    return os;
-}
-using umap = map<char,int>;
+using umap = unordered_map<char,int>;
+
 class Solution {
 public:
     bool chk(umap &a, umap &b) {
