@@ -101,6 +101,7 @@ static int numberOfPairs(int[] b, long k) {
 - Same as [LeetCode Cherry Pickup](https://leetcode.com/problems/cherry-pickup/)
 ##### Logic:
 - Dynamic Programming
+- Optimization: to reduce dp state from dp(r1,c1,r2,c2) we can observe that c2 = r1+c1-r2, thus we can only store 3 values dp(r1,c1,r2)
 ```cpp
 const int INF = 1e7;
 vector<vector< vector<int>>> dp;
