@@ -140,3 +140,42 @@ int cherryPickup(vector<vector<int>>& a) {
     return ans;
 }
 ```
+
+### 5. Beautiful Arrangements 
+- Given an integer N ( 1<= N <= 20), find the number of permutations of 1-N such that for every 1<=i<=N, A[i]%i = 0 or i%A[i] = 0
+```
+Sample Input1:
+2
+Sample Output1:
+2
+
+Sample Input2:
+3
+Sample Output2:
+3
+```
+##### Logic:
+- Bitmask + dp
+```cpp
+vector<vector<int>> dp;
+int rec(int i, int mask, int n) {
+	if(i == 0) return 1;
+	int &ret = dp[i][mask];
+	if(ret != -1) return ret;
+	ret = 0;
+	for(int j = 0; j < n; ++j) {
+		bool div = (i%(j+1) == 0) || ((j+1)%i == 0);
+		if(div && ((1<<j) & mask) == 0) {
+			ret += rec(i-1, mask ^ (1<<j), n);
+		} 
+	}
+	return ret;
+}
+void solve()
+{
+	int n;
+	cin >> n;
+	dp.resize(n+1, vector<int>(1<<n, -1));
+	cout << rec(n, 0, n) << "\n";
+}
+```
