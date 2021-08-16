@@ -71,10 +71,10 @@ Distinct pairs: (1,9), (2,8), (3,7)
 - Use Hashset to check if target-A[i] is present in A
 ```java
 static int numberOfPairs(int[] b, long k) {
-		int n = b.length;
-		long[] a = new long[n];
-		for(int i = 0; i < n; ++i) a[i] = b[i];
-		HashMap<Long, Long> hash = new HashMap<>();
+    int n = b.length;
+    long[] a = new long[n];
+    for(int i = 0; i < n; ++i) a[i] = b[i];
+    HashMap<Long, Long> hash = new HashMap<>();
     for (int i = 0; i < n; i++) {
         if (!hash.containsKey(a[i]))
             hash.put(a[i], (long)0);
