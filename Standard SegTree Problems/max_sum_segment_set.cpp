@@ -33,7 +33,8 @@ int n , m;
 void build(int v , int tl , int tr){
 	if(tl == tr) {
 		int val = max((int)0, a[tl]);
-		tree[v] = { val , val , val , a[tl]};
+		tree[v].seg = tree[v].pref = tree[v].suff = val;
+		tree[v].sum = a[tl];
 	} else {
 		int tmid = (tl + tr)/2;
 		build(2*v , tl , tmid);
