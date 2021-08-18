@@ -80,7 +80,7 @@ void kosaraju(int n) {
 	for(int u = 1; u <= n; ++u) {
 		for(auto &v: g[u]) {
 			if(roots[u] != roots[v]) 
-				cg[u].push_back(v);
+				cg[roots[u]].push_back(roots[v]);
 		}
 	}
 	cout << "root nodes : "; for(auto &i: root_nodes) cout << i << " "; cout << "\n";
@@ -104,3 +104,40 @@ int32_t main() {
 	
 	kosaraju(n);
 }
+
+/*
+Input:
+8 12
+1 2
+2 3
+3 1
+2 8
+3 4
+8 4
+4 8
+7 8
+5 4
+5 7
+7 6
+6 5
+
+Output:
+Total components  : 3
+Components : 
+7 6 5  
+2 3 1  
+8 4  
+Component Numbers : 
+1 1 1 2 0 0 0 2 
+root nodes : 7 2 8 
+roots : 0 2 2 2 8 7 7 7 8 
+condensation graph: 
+1: 
+2: 8 8 
+3: 
+4: 
+5: 
+6: 
+7: 8 8 
+8: 
+*/
