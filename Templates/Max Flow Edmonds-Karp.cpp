@@ -1,6 +1,6 @@
 #define int int64_t
 const int INF = 1e18;
-int n;
+int N;
 vector<vector<int>> cap;
 vector<vector<int>> g;
 vector<set<int>> setg; // to check multiple edges
@@ -31,7 +31,7 @@ int bfs(int s, int t, vector<int>& par) {
 
 int maxflow(int s, int t) {
     int flow = 0;
-    vector<int> par(n+1);
+    vector<int> par(N+1);
     int new_flow;
 
     while (new_flow = bfs(s, t, par)) {
@@ -48,16 +48,38 @@ int maxflow(int s, int t) {
     return flow;
 }
 
+void dfs(int s, vector<int> &vis) {
+	vis[s] = 1;
+	for(auto v : g[s]) {
+		if(!vis[v] && cap[s][v] > 0) dfs(v, vis);
+	}
+}
+
+void findMinCut() {
+	// call maxflow before running this 
+	vector<int> vis(N + 1, 0); // everything in set 2
+	dfs(1, vis);
+	vector<pair<int,int>> minCutEdges;
+	for(int u = 1; u <= N; ++u) {
+		for(int v : g[u]) {
+			if(vis[u] != vis[v] && cap[u][v] == 0) 
+				minCutEdges.push_back({u,v});
+		}
+	}
+	for(auto &i : minCutEdges) cout << i.ff << " " << i.ss << "\n";
+}
+
 void solve()
 {
-	int m;
+	int n, m;
 	cin >> n >> m;
-	g.resize(n+1);
-	setg.resize(n+1);
-	cap.assign(n+1, vector<int>(n+1, 0));
+	N = n;
+	g.resize(N+1);
+	setg.resize(N+1);
+	cap.assign(N+1, vector<int>(N+1, 0));
 	for(int i=0; i < m; ++i) {
-		int u, v, c;
-		cin >> u >> v >> c;
+		int u, v, c = 1;
+		cin >> u >> v;
 		if(setg[u].count(v) == 0) { // multiple pipes
 			g[u].push_back(v);
 			g[v].push_back(u);
@@ -65,6 +87,9 @@ void solve()
 			setg[v].insert(u);
 		}
 		cap[u][v] += c;
+		cap[v][u] += c; // remove this for directed edge
 	}
+	
 	cout << maxflow(1, n) << "\n";
+	findMinCut();
 }
