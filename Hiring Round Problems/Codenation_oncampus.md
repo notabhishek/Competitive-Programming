@@ -99,7 +99,7 @@ void merge(node &cur , node l , node r) {
 		cur = l;
 		return;
 	}
-	cur.sum = l.sum + r.sum;
+	cur.sum = l.sum + ((l.len & 1) ? -r.sum : r.sum);
 	cur.len = l.len + r.len;
 	cur.pp[0] = max(l.pp[0], r.pp[0]);
 	cur.pp[0] = max(cur.pp[0], max(l.pp[2] + r.np[1] , l.pn[2] + r.pn[1]));
