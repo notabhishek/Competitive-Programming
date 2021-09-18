@@ -1,5 +1,5 @@
 # Competitive-Programming
-CP Templates , Solutions, Standard Problems
+CP Templates, Solutions, Standard Problems
 
 Profiles : 
 - linkedin - https://www.linkedin.com/in/notabhishek/
