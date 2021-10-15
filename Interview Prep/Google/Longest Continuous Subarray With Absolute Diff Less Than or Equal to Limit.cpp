@@ -2,7 +2,7 @@
 // Solution2: Heap: nlogn 
 // Solution3: MaxDeque: n
 
-/*
+
 // Solution 1
 // Multiset solution: NlogK
 class Solution {
@@ -32,7 +32,7 @@ public:
 };
 */
 
-/*
+
 // Solution 2
 // By Implementing heap of pairs {data,index}: NlogN
 struct heapNode {
@@ -94,4 +94,4 @@ public:
         return ans;
     }
 };
-*/
+
