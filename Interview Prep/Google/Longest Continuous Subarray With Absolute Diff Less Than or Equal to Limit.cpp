@@ -95,3 +95,42 @@ public:
     }
 };
 
+
+// Solution 3
+// Using Max Deque: O(N)
+class Solution {
+public:
+    /*
+    maintain a maxDeque: 
+        indexes are in increasing order but values are in decreasing order
+        at any time max of window will be front of deque
+        
+        Algo: 
+            1. pop elements from back of deque till they are <= current element (to maintain desc order)
+            2. insert the current element 
+            3. if the element at front of deque is out of bounds, pop_front()
+            4. Max of the window = nums[maxDeque.front()]
+            
+        Complexity :
+            Every element is pushed and popped only once, hence complexity O(N)
+    */
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        deque<int> maxDeque; 
+        vector<int> ans;
+        for(int i = 0; i < nums.size(); ++i) {
+            // pop elements from right until nums[right] < nums[i]
+            while(!maxDeque.empty() && nums[maxDeque.back()] <= nums[i]) maxDeque.pop_back();
+            
+            // push the current element 
+            maxDeque.push_back(i);
+            
+            // remove left element until it is out of bounds
+            if(maxDeque.front() <= i-k) maxDeque.pop_front();
+            
+            // Maximum for this window: maxDeque.front()
+            if(i >= k-1) ans.push_back(nums[maxDeque.front()]); 
+        }
+        return ans;
+    }
+};
+
