@@ -1,4 +1,4 @@
-// small segment tree with lazy propogation
+// small seg tree with lazy prop and seg descend 
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -87,6 +87,23 @@ public:
 	void update(int l, int v) {
 		update(1, 0, n-1, l, l, v);
 	}
+	
+	// first index with sum >= k
+	int descend(int v, int tl, int tr, int k) {
+		if(clazy[v]) prop(t[v], tl, tr);
+		if(t[v] < k) return -1;
+		if(tl == tr) return tl;
+		int tm = (tl + tr)/2;
+		if(t[2*v] < k) return descend(2*v+1, tm+1, tr, k-t[2*v]);
+		return descend(2*v, tl, tm, k); 
+	}
+	int descend(int k) {
+		return descend(1, 0, n-1, k);
+	}
+	
+	void print() {
+		cout <<"[ "; for(int i = 0; i < n; ++i) cout << query(i) << ", "; cout << "]\n";
+	}
 };
 
 int main() {
@@ -110,5 +127,7 @@ int main() {
 	cout << "range updates\n";
 	tree.update(1, 4, -2);
 	
+	tree.print();
+	cout << tree.descend(10) << "\n";
 	return 0;
 }
